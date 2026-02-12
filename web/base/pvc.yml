@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: web-uploads-pvc
+  labels:
+    app.kubernetes.io/name: web
+    app.kubernetes.io/component: web
+    app.kubernetes.io/part-of: foxtown
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi
