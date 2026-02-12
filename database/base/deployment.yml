@@ -18,7 +18,7 @@ spec:
     metadata:
       labels:
         app.kubernetes.io/name: database
-            app.kubernetes.io/component: database
+        app.kubernetes.io/component: database
         app.kubernetes.io/part-of: foxtown
     spec:
       containers:
