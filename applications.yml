@@ -1,0 +1,38 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: cea-informatics
+  namespace: ceaip-foxtown
+  labels:
+    app.kubernetes.io/name: cea-informatics
+    app.kubernetes.io/part-of: foxtown
+    app.kubernetes.io/managed-by: argocd
+spec:
+  generators:
+    - list:
+        elements:
+          - name: web
+            path: web/base
+          - name: database
+            path: database/base
+  template:
+    metadata:
+      name: "{{name}}"
+      labels:
+        app.kubernetes.io/name: "{{name}}"
+        app.kubernetes.io/component: "{{name}}"
+        app.kubernetes.io/part-of: foxtown
+        app.kubernetes.io/managed-by: argocd
+    spec:
+      project: ceai
+      source:
+        repoURL: https://github.com/cea-informatics/manifests.git
+        targetRevision: main
+        path: "{{path}}"
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: ceaip-foxtown
+      syncPolicy:
+        automated:
+          prune: true
+          selfHeal: true
