@@ -48,10 +48,10 @@ spec:
               mountPath: /var/www/html/wp-content/uploads
           resources:
             requests:
-              cpu: 25m
-              memory: 250Mi
+              cpu: 50m
+              memory: 500Mi
             limits:
-              memory: 250Mi
+              memory: 500Mi
           readinessProbe:
             tcpSocket:
               port: 80
