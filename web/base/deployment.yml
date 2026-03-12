@@ -21,7 +21,7 @@ spec:
     spec:
       containers:
         - name: wordpress
-          image: ghcr.io/cea-informatics/wordpress:1.5.0
+          image: ghcr.io/cea-informatics/wordpress:1.8.0
           imagePullPolicy: Always
           ports:
             - containerPort: 80
